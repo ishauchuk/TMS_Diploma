@@ -1,0 +1,9 @@
+asgiref==3.5.0; python_version >= "3.8"
+django==4.0.4; python_version >= "3.8"
+flake8==4.0.1; python_version >= "3.6"
+mccabe==0.6.1; python_version >= "3.6"
+pycodestyle==2.8.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
+pyflakes==2.4.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.4.0" and python_version >= "3.6"
+python-decouple==3.6
+sqlparse==0.4.2; python_version >= "3.8"
+tzdata==2022.1; sys_platform == "win32" and python_version >= "3.8"
