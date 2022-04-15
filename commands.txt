@@ -1,0 +1,5 @@
+docker build --tag docker-diploma .
+docker run --publish 8000:8000 docker-diploma
+
+docker-compose build
+docker-compose up
