@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.shortcuts import HttpResponse
 
 
@@ -7,4 +6,16 @@ def index(request):
 
 
 def about(request):
-    return HttpResponse("Мы салон-парикмахерская.")
+    return HttpResponse('Салон-парикмахерская "Люби Себя" рад видеть Вас.')
+
+
+def prices(request):
+    return HttpResponse("Здесь находится список услуг и цены.")
+
+
+def portfolio(request):
+    return HttpResponse("Здесь находятся примеры работ наших мастеров.")
+
+
+def order(request):
+    return HttpResponse("Здесь происходит запись на услуги")
