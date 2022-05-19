@@ -1,4 +1,4 @@
-from django.shortcuts import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 
 
 def index(request):
@@ -19,3 +19,7 @@ def portfolio(request):
 
 def order(request):
     return HttpResponse("Здесь происходит запись на услуги")
+
+
+def pageNotFound(request, exception):
+    return HttpResponseNotFound('<h1>Упс, такой страницы нет</h1>')
