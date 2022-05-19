@@ -15,7 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+
+from api.views import ServicesAPIView, MastersAPIView, ClientsAPIView, \
+    OrdersAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/services', ServicesAPIView.as_view()),
+    path('api/v1/masters', MastersAPIView.as_view()),
+    path('api/v1/clients', ClientsAPIView.as_view()),
+    path('api/v1/clients/<int:id>', ClientsAPIView.as_view()),
+    path('api/v1/orders', OrdersAPIView.as_view()),
+    # path('api/v1/'),
 ]
+
+# urlpatterns += static(static(settings.MEDIA_URL, document_roo=settings.MEDIA_ROOT))
