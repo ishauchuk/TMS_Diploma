@@ -27,6 +27,13 @@
             float: left;
         }
 
+        .user_name {
+            float: right;
+            color: white;
+            padding: 14px 16px;
+            text-align: center;
+        }
+
         li a {
             display: block;
             color: white;
@@ -53,6 +60,12 @@
     <li><a href="/order">Запись на услуги</a></li>
     <li><a href="/price-list">Прейскурант цен и услуг</a></li>
     <li><a href="/about">О нас</a></li>
+    {% if user.is_superuser %}
+        <li class="admin"><a href="/admin/">Admin</a></li>
+    {% endif %}
+    {% if user.is_authenticated %}
+        <a class="user_name">{{ user }}</a>
+    {% endif %}
 </ul>
 
 <h3>Приветствуем Вас на сайте салона-парикмехерской "Люби себя"</h3>
