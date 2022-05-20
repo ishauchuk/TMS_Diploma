@@ -57,8 +57,8 @@
     <li><a class="active" href="..">Домашняя</a></li>
     <li><a href="/portfolio">Портфолио</a></li>
     <li><a href="/masters">Наши мастера</a></li>
-    <li><a href="/order">Запись на услуги</a></li>
-    <li><a href="/price-list">Прейскурант цен и услуг</a></li>
+    <li><a href="/orders">Запись на услуги</a></li>
+    <li><a href="/prices">Прейскурант цен и услуг</a></li>
     <li><a href="/about">О нас</a></li>
     {% if user.is_superuser %}
         <li class="admin"><a href="/admin/">Admin</a></li>
@@ -67,11 +67,11 @@
         <a class="user_name">{{ user }}</a>
     {% endif %}
 </ul>
-
-<h3>Приветствуем Вас на сайте салона-парикмехерской "Люби себя"</h3>
-<p>{{ description }}</p>
-<p>Данная страница находится в разработке</p>
-
+{% block context %}
+<h3 align="center">Приветствуем Вас на сайте салона-парикмехерской "Люби себя"</h3>
+<p align="center">{{ description }}</p>
+<p align="center">Данная страница находится в разработке</p>
+{% endblock %}
 </body>
 </html>
 
