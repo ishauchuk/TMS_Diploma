@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cалон-парикмехерская "Люби себя" - {{ title }}</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+          crossorigin="anonymous">
+    <style>
+        body {
+            font-size: 28px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+            position: -webkit-sticky; /* Safari */
+            position: sticky;
+            top: 0;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+<ul>
+    <li><a class="active" href="..">Домашняя</a></li>
+    <li><a href="/portfolio">Портфолио</a></li>
+    <li><a href="/masters">Наши мастера</a></li>
+    <li><a href="/order">Запись на услуги</a></li>
+    <li><a href="/price-list">Прейскурант цен и услуг</a></li>
+    <li><a href="/about">О нас</a></li>
+</ul>
+
+<h3>Приветствуем Вас на сайте салона-парикмехерской "Люби себя"</h3>
+<p>{{ description }}</p>
+<p>Данная страница находится в разработке</p>
+
+</body>
+</html>
+
+
