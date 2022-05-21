@@ -40,6 +40,10 @@ INSTALLED_APPS = [
 
     # Local Applications
     'salon.apps.SalonConfig',
+
+    # Third Party
+    'phonenumber_field',
+    'rangefilter',
 ]
 
 MIDDLEWARE = [

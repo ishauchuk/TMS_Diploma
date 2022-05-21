@@ -4,8 +4,7 @@
     <h3 align="center">{{ description }}</h3>
     {% for master in masters %}
         <img style="max-width:300px" src="{{ master.master_photo.url }}"/>
-        <h1>{{ master.master_name }}</h1>
-        <h1>{{ master.master_surname }}</h1>
+        <h1>{{ master.master_name }} {{ master.master_surname }}</h1>
         <h2>Специализация:</h2>
         {% for skills in master.master_skills.filter %}
             <li>{{ skills }}</li><br>

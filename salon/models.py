@@ -71,14 +71,16 @@ class Orders(models.Model):
         (datetime.time(hour=x, minute=y), '{:02d}:{:02d}'.format(x, y))
         for x in range(9, 21) for y in (0, 30)]
     order_type = models.ForeignKey(Services, null=True,
-                                   on_delete=models.SET_NULL)
+                                   on_delete=models.SET_NULL,
+                                   verbose_name="Заказ")
     order_date = models.DateField(
         validators=[MinValueValidator(datetime.date.today)],
         verbose_name='Дата посещения')
     order_time = models.TimeField(choices=TIME_CHOICES,
                                   verbose_name='Время посещения')
     master_choice = models.ForeignKey(Masters, null=True,
-                                      on_delete=models.SET_NULL)
+                                      on_delete=models.SET_NULL,
+                                      verbose_name='Мастер')
 
     class Meta:
         verbose_name = 'Заказ'
