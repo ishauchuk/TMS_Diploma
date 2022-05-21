@@ -1,5 +1,6 @@
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
+from .models import *
 
 
 def home(request):
@@ -17,8 +18,10 @@ def about(request):
 
 
 def prices(request):
+    price_list = Services.objects.all()
     return render(request, 'prices.html', context={
         'title': 'Прейскурант цен и услуг',
+        'price': price_list,
         'description': 'Здесь находится список услуг с ценами'
     })
 
@@ -38,8 +41,10 @@ def orders(request):
 
 
 def masters(request):
+    masters_list = Masters.objects.all()
     return render(request, 'masters.html', context={
         'title': 'Наши мастера',
+        'masters': masters_list,
         'description': 'Здесь находится информация о наших мастерах'
     })
 

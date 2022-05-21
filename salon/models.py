@@ -29,8 +29,7 @@ class Masters(models.Model):
     master_surname = models.CharField(max_length=50, verbose_name="Фамилия",
                                       primary_key=True)
     master_photo = models.ImageField(
-        upload_to='static/master_photos/',
-        default='static/master_photos/master_photo_default.jpg',
+        default='master_photo_default.jpg',
         verbose_name="Фото", null=True, blank=True,
     )
     master_phone = PhoneNumberField(unique=True, null=False, blank=False,

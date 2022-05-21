@@ -1,5 +1,10 @@
 {% extends 'home_page.html' %}
 
 {% block context %}
-    <h3 align="center">{{ description }}</h3>
+    <h1 align="center">{{ description }}</h1>
+    {% for price in price %}
+        <h2>{{ price.service_name }}</h2>
+        <h2>{{ price.service_price }} рублей</h2>
+        <hr>
+    {% endfor %}
 {% endblock %}
