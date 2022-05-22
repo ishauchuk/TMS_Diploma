@@ -1,0 +1,15 @@
+{% extends 'home_page.html' %}
+
+{% block context %}
+<form method="POST" action="{% url 'clients' %}">
+    {% csrf_token %}
+    <br>
+    <h1> Имя {{  form.client_name }}</h1><br>
+    <h1> Фамилия {{  form.client_surname }}</h1><br>
+    <h1> Email {{  form.client_email }}</h1><br>
+    <h1> Номер телефона {{  form.client_phone }}</h1><br>
+    <h1> Дополнительная информация</h1><br>
+    <h1>{{ form.info }}</h1><br>
+    <button>Отправить</button>
+</form>
+{% endblock %}

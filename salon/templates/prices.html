@@ -1,8 +1,10 @@
 {% extends 'home_page.html' %}
+{% load prices_tags %}
 
 {% block context %}
     <h1 align="center">{{ description }}</h1>
-    {% for price in price %}
+    {% getprices as prices %}
+    {% for price in prices %}
         <h2>{{ price.service_name }}</h2>
         <h2>{{ price.service_price }} рублей</h2>
         <hr>
