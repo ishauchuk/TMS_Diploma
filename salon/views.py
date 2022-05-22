@@ -1,6 +1,6 @@
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponseNotFound
 from django.shortcuts import render
-from .models import *
+from .models import Services, Masters
 
 
 def home(request):
