@@ -2,15 +2,40 @@
 {% load masters_tags %}
 
 {% block context %}
+
+
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            background-color: #dddddd;
+            padding: 10px;
+        }
+
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+        }
+    </style>
+
     <h3 align="center">{{ description }}</h3>
-    {% getmasters as masters %}
-    {% for master in masters %}
-        <img style="max-width:300px" src="{{ master.master_photo.url }}"/>
-        <h1>{{ master.master_name }} {{ master.master_surname }}</h1>
-        <h2>Специализация:</h2>
-        {% for skills in master.master_skills.filter %}
-            <li>{{ skills }}</li><br>
+    <div class="grid-container">
+
+        {% getmasters as masters %}
+        {% for master in masters %}
+            <div class="grid-item">
+                <img style="max-width:300px"
+                     src="{{ master.master_photo.url }}"/>
+                <h1>{{ master.master_name }} {{ master.master_surname }}</h1>
+                <h2>Специализация:</h2>
+                {% for skills in master.master_skills.filter %}
+                    <li>{{ skills }}</li><br>
+                {% endfor %}
+                <hr>
+            </div>
         {% endfor %}
-        <hr>
-    {% endfor %}
+    </div>
 {% endblock %}

@@ -45,34 +45,18 @@ class Masters(models.Model):
         return f'{self.master_name} {self.master_surname}'
 
 
-class Clients(models.Model):
+class Orders(models.Model):
     client_name = models.CharField(verbose_name='Имя', max_length=50)
-    client_surname = models.CharField(verbose_name='Фамилия', max_length=50,
-                                      primary_key=True)
-    client_email = models.EmailField(max_length=254, unique=True)
-    client_phone = PhoneNumberField(unique=True, null=False, blank=False,
+    client_surname = models.CharField(verbose_name='Фамилия', max_length=50)
+    client_phone = PhoneNumberField(null=False, blank=False,
                                     verbose_name="Номер телефона",
                                     help_text='+375XX XXX-XX-XX')
-    info = models.TextField(verbose_name='Дополнительная информация',
-                            blank=True)
-
-    class Meta:
-        verbose_name = 'Клиент'
-        verbose_name_plural = 'Клиенты'
-
-    def __str__(self):
-        return f'{self.client_name} {self.client_surname}'
-
-
-class Orders(models.Model):
-    client_choice = models.ForeignKey(Clients, null=True,
-                                      on_delete=models.SET_NULL)
     TIME_CHOICES = [
         (datetime.time(hour=x, minute=y), '{:02d}:{:02d}'.format(x, y))
         for x in range(9, 21) for y in (0, 30)]
     order_type = models.ForeignKey(Services, null=True,
                                    on_delete=models.SET_NULL,
-                                   verbose_name="Заказ")
+                                   verbose_name="Услуга")
     order_date = models.DateField(
         validators=[MinValueValidator(datetime.date.today)],
         verbose_name='Дата посещения')
@@ -85,6 +69,7 @@ class Orders(models.Model):
     class Meta:
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
+        unique_together = ('order_time', 'master_choice', 'order_date')
 
     def __str__(self):
-        return f'{self.order_type} {self.client_choice}'
+        return f'{self.order_type} {self.client_surname}'

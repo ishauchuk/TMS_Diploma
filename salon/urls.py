@@ -10,8 +10,6 @@ urlpatterns = [
     path('portfolio/', views.portfolio, name='portfolio'),
     path('prices/', PricesView.as_view(), name='prices'),
     path('orders/', views.orders, name='orders'),
-    path('orders/login/', views.login, name='login'),
-    path('orders/addclient/', views.addclient, name='addclient'),
     path('masters/', MastersView.as_view(), name='masters'),
 ]
 

@@ -1,57 +1,46 @@
 # -*- coding: utf-8 -*-
 from django.forms import ModelForm
 from django import forms
-from .models import Clients
-from phonenumber_field.formfields import PhoneNumberField
+from .models import Orders
 
 
-# class AddOrder(forms.Form):
-#     client_choice = forms.ForeignKey(Clients, null=True,
-#                                       on_delete=models.SET_NULL)
-#     TIME_CHOICES = [
-#         (datetime.time(hour=x, minute=y), '{:02d}:{:02d}'.format(x, y))
-#         for x in range(9, 21) for y in (0, 30)]
-#     order_type = forms.ForeignKey(Services, null=True,
-#                                    on_delete=models.SET_NULL,
-#                                    verbose_name="Заказ")
-#     order_date = forms.DateField(
-#         validators=[MinValueValidator(datetime.date.today)],
-#         verbose_name='Дата посещения')
-#     order_time = forms.TimeField(choices=TIME_CHOICES,
-#                                   verbose_name='Время посещения')
-#     master_choice = forms.ForeignKey(Masters, null=True,
-#                                       on_delete=models.SET_NULL,
-#                                       verbose_name='Мастер')
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 
-# class DatePickerInput(forms.DateInput):
-#     input_type = 'date'
-#
-#
-# class TestForm(forms.ModelForm):
-#     class Meta:
-#     model = Orders
-#     fields = ['order_date', 'order_time', 'order_type', 'master_choice',
-#     'client_choice']
-#
-#     widgets = {
-#         'order_date': DatePickerInput(),
-#     }
-#     model = Clients
-#     fields = '__all__'
-
-
-class AddClient(ModelForm):
-    client_name = forms.CharField(label="Имя", widget=forms.TextInput(attrs={'placeholder': 'Имя'}))
-    client_surname = forms.CharField(label="Фамилия", widget=forms.TextInput(attrs={'placeholder': 'Фамилия'}))
-    client_email = forms.EmailField(label="Email", widget=forms.TextInput(attrs={'placeholder': 'Email'}))
-    client_phone = PhoneNumberField(label="Номер телефона", widget=forms.TextInput(attrs={'placeholder': '+375 XX XXX-XX-XX'}))
-    info = forms.TextInput()
-
+class OrdersForm(ModelForm):
     class Meta:
-        model = Clients
-        fields = ['client_name', 'client_surname', 'client_email', 'client_phone',
-            'info']
+        model = Orders
+        fields = '__all__'
+
         widgets = {
-            'info': forms.Textarea(attrs={'cols': 30, 'rows': 3})
+            'order_date': DateInput(),
         }
+
+    # def clean(self):
+    #     order_type = self.cleaned_data.get('order_type')
+    #     master_choice = self.cleaned_data.get('master_choice')
+    #     master = Masters.objects.filter(master_skills='стрижка мужская')
+    #     print(master.values_list())
+
+    # def clean(self):
+    #
+    #     order_type = self.cleaned_data.get('order_type')
+    #     master_choice = self.cleaned_data.get('master_choice')
+    #     for i in range(len(Masters.objects.all())):
+    #         for j in Masters.objects.all()[i].master_skills.filter():
+    #             print(j.service_name)
+    #             if str(order_type) == str(j.service_name):
+    #                 return self.cleaned_data
+    #             else:
+    #                 return HttpResponse("Этот мастер оказывает другие услуги")
+    # print(Masters.objects.all()[i].master_skills.all())
+    # m1 = Masters.objects.all()
+    # for i in m1[0].master_skills.filter():
+    #     print(i.service_name)
+    # if master_choice == Masters.objects.all().filter(master_skills=order_type):
+    #     print('no')
+    #     print(master_choice)
+    #     raise ValidationError("Workshop times overlap.")
+    # return self.cleaned_data
+    #     super(Orders, self).clean()

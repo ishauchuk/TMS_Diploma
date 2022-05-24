@@ -2,8 +2,12 @@
 
 {% block context %}
     <h3 align="center">{{ description }}</h3>
+    <form method="POST" action="{% url 'orders' %}">
+        {% csrf_token %}
+        <br>
+        {{ form.as_p }}
+        <button>Отправить</button>
 
-    <p><a href="{% url 'addclient' %}">Зарегистрироваться</a></p>
-    <p><a href="{% url 'login' %}">Войти</a></p>
 
+    </form>
 {% endblock %}

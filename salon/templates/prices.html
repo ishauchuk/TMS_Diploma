@@ -2,11 +2,38 @@
 {% load prices_tags %}
 
 {% block context %}
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
     <h1 align="center">{{ description }}</h1>
-    {% getprices as prices %}
-    {% for price in prices %}
-        <h2>{{ price.service_name }}</h2>
-        <h2>{{ price.service_price }} рублей</h2>
-        <hr>
-    {% endfor %}
+
+    <table border="1">
+        <tr>
+            <th>Услуга</th>
+            <th>Цена, руб.</th>
+        </tr>
+        {% getprices as prices %}
+        {% for price in prices %}
+            <tr>
+                <td>{{ price.service_name }}</td>
+                <td>{{ price.service_price }} рублей</td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
