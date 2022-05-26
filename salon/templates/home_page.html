@@ -8,6 +8,9 @@
           rel="stylesheet"
           integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
           crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         body {
             font-size: 28px;
@@ -49,6 +52,21 @@
 
         .active {
             background-color: #4CAF50;
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #ffffff;
+            color: #111;
+            text-align: center;
+        }
+
+        .fa-instagram {
+            background: #125688;
+            color: white;
         }
     </style>
 </head>
@@ -134,6 +152,10 @@
     </div>
 
 {% endblock %}
+<div class="footer">
+    <p><a href="https://www.instagram.com/liubisebia_sl/"
+          class="fa fa-instagram"></a> Наш инстаграм</p>
+</div>
 </body>
 </html>
 
