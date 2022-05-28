@@ -31,7 +31,8 @@ class OrdersAdmin(admin.ModelAdmin):
     list_display = ('client_name', 'client_surname', 'order_date',
                     'order_time', 'order_type', 'master_choice',)
     list_filter = (
-        ('order_time', DateTimeRangeFilter), 'master_choice', 'order_type')
+        'order_date', ('order_time', DateTimeRangeFilter), 'master_choice',
+        'order_type')
 
     # def formfield_for_manytomany(self, db_field, request, **kwargs):
     #     if db_field.name == "master_choice":

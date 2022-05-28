@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
-from django.forms import ModelForm
+import datetime
+
+from django.forms import ModelForm, ChoiceField
 from django import forms
 from .models import Orders
+from django.core.exceptions import NON_FIELD_ERRORS
 
 
 class DateInput(forms.DateInput):
@@ -9,9 +12,22 @@ class DateInput(forms.DateInput):
 
 
 class OrdersForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['order_type'].empty_label = "Услуга не выбрана"
+        self.fields['order_time'].choices = [('', 'Время не выбрано')] + \
+                                            self.fields['order_time'].choices[
+                                            1:]
+        self.fields['master_choice'].empty_label = "Мастер не выбран"
+
     class Meta:
         model = Orders
         fields = '__all__'
+        error_messages = {
+            NON_FIELD_ERRORS: {
+                'unique_together': f"Мастер на это время уже занят",
+            }
+        }
 
         widgets = {
             'order_date': DateInput(),

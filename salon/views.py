@@ -1,53 +1,68 @@
 # -*- coding: utf-8 -*-
-from django.http import HttpResponseNotFound, HttpResponse
+from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
-from .models import Services, Masters
+from .models import Services, Masters, Orders
 from .forms import OrdersForm
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView, View
 
 
-def home(request):
-    return render(request, 'home_page.html', context={
-        'title': 'Домашняя',
-        'description': 'Сайт салона-парикмехерской "Люби-себя"'
-    })
+class HomeView(View):
+    template_name = 'home_page.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, context={
+            'title': 'Домашняя',
+        })
 
 
-def about(request):
-    return render(request, 'about.html', context={
-        'title': 'О нас',
-        'description': 'Контактный номер телефона/Адрес'
-    })
+class AboutView(View):
+    template_name = 'about.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, context={
+            'title': 'О нас',
+            'description': 'О нас',
+        })
 
 
 class PricesView(ListView):
     model = Services
     template_name = 'prices.html'
     extra_context = {'title': 'Прейскурант цен и услуг',
-                     'description': 'Здесь находится список услуг с ценами'}
+                     'description': 'Прейскурант услуг и цен', }
 
 
-def portfolio(request):
-    return render(request, 'portfolio.html', context={
-        'title': 'Примеры работ',
-        'description': 'Здесь находятся фотографии работ наших мастеров'
-    })
+class PortfolioView(View):
+    template_name = 'portfolio.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, self.template_name, context={
+            'title': 'Примеры работ',
+            'description': 'Фотографии работ наших мастеров',
+        })
 
 
-def orders(request):
-    if request.POST:
+class OrdersView(CreateView):
+    model = Orders
+    template_name = 'orders.html'
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'orders.html', {"form": OrdersForm})
+
+    def post(self, request, *args, **kwargs):
         form = OrdersForm(data=request.POST)
         if form.is_valid():
             form.save()
-            return redirect(home)
-        else:
-            return HttpResponse('<h1>Упс, мастер уже занят</h1>')
-    return render(request, 'orders.html', {"form": OrdersForm})
+            return render(request, self.template_name,
+                          context={'description': 'Вы успешно записаны'})
+        return render(request, self.template_name, {'form': form})
 
 
 class MastersView(ListView):
     model = Masters
     template_name = 'masters.html'
+    extra_context = {'title': 'Наши мастера',
+                     'description': 'Наши мастера', }
 
 
 def pageNotFound(request, exception):

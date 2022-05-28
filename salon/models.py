@@ -66,6 +66,9 @@ class Orders(models.Model):
                                       on_delete=models.SET_NULL,
                                       verbose_name='Мастер')
 
+    client_phone.error_messages[
+        'invalid'] = 'Проверьте правильность введенного номера телефона.'
+
     class Meta:
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
