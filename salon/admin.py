@@ -1,4 +1,5 @@
 from django.contrib import admin
+from .forms import OrdersForm
 from .models import Masters, Services, Orders
 from rangefilter.filters import DateTimeRangeFilter
 from django.utils.safestring import mark_safe
@@ -28,16 +29,9 @@ class SkillsAdmin(admin.ModelAdmin):
 
 @admin.register(Orders)
 class OrdersAdmin(admin.ModelAdmin):
+    form = OrdersForm
     list_display = ('client_name', 'client_surname', 'order_date',
                     'order_time', 'order_type', 'master_choice',)
     list_filter = (
         'order_date', ('order_time', DateTimeRangeFilter), 'master_choice',
         'order_type')
-
-    # def formfield_for_manytomany(self, db_field, request, **kwargs):
-    #     if db_field.name == "master_choice":
-    #         master_skill = Masters.objects.filter()
-    #         kwargs["queryset"] = Masters.objects.filter(master_skill='маникюр')
-    #     return super(OrdersAdmin, self).formfield_for_manytomany(db_field,
-    #                                                            request,
-    #                                                            **kwargs)
