@@ -54,6 +54,14 @@
             background-color: #4CAF50;
         }
 
+        .content {
+            padding-bottom: 60px;
+            padding-left: 40px;
+            padding-right: 40px;
+            background-color: white;
+
+        }
+
         .footer {
             position: fixed;
             left: 0;
@@ -86,71 +94,73 @@
         <a class="user_name">{{ user }}</a>
     {% endif %}
 </ul>
-{% block context %}
-    <h3 align="center">Приветствуем Вас на сайте салона-парикмехерской "Люби
-        себя"</h3>
-    <p align="left">
-        Кто наш клиент? Стилистика.<br>
-        Мы обслуживаем все категории клиентов: мужчин, женщин и детей.<br>
-        Отсутствие каких-либо жёстких рамок по стилистике, выполнение абсолютно
-        любых видов стрижек и окрашиваний позволяет нам держать двери открытыми
-        для всех желающих.<br>
-        Широкий модельный ряд стрижек, которые выполняются в разумное время с
-        максимальным качеством — наше лучшее достоинство.
-    </p>
+<div class="content">
+    {% block context %}
+        <h3 align="center">Приветствуем Вас на сайте салона-парикмехерской
+            "Люби себя"</h3>
+        <p align="left">
+            Кто наш клиент? Стилистика.<br>
+            Мы обслуживаем все категории клиентов: мужчин, женщин и детей.<br>
+            Отсутствие каких-либо жёстких рамок по стилистике, выполнение
+            абсолютно любых видов стрижек и окрашиваний позволяет нам держать
+            двери открытыми для всех желающих.<br>
+            Широкий модельный ряд стрижек, которые выполняются в разумное время
+            с максимальным качеством — наше лучшее достоинство.
+        </p>
 
-    <p align="left">Мы предлагаем широкий спектр современных услуг:<br>
-    <li>стрижки (мужские, женские, детские)</li><br>
-    <li>современные и классические методы окраски и мелирования</li><br>
-    <li>уход за волосами, лечение</li><br>
-    <li>маникюр,педикюр и многое другое.</li><br></p>
+        <p align="left">Мы предлагаем широкий спектр современных услуг:<br>
+        <li>стрижки (мужские, женские, детские)</li><br>
+        <li>современные и классические методы окраски и мелирования</li><br>
+        <li>уход за волосами, лечение</li><br>
+        <li>маникюр,педикюр и многое другое.</li><br></p>
 
-    <style>.instawall-root647 {
-        min-height: 80px;
-        margin: 0 auto
-    }</style>
-    <script>window['instawall647'] = {
-        "token": "BiwjtoZ+1Nqc571U05Wcg+X6DT0kzRcNZwkgzFXhj9GlDTjsVERrBaacEqDKG/baXBGB/EaSDfKx2kY4r/5NqM2F5QEiLOczPXVZOBZ0+b2kGMf9hw==",
-        "root_tagid": "instawall-root647",
-        "card_padding": "5",
-        "card_border_radius": "5",
-        "card_count": "3",
-        "layout_max_width": "1128",
-        "count_post": "6",
-        "header_text_size": "20",
-        "header_text_color": "#000000",
-        "header_logo_size": "50",
-        "header_button_text": "Подписаться",
-        "header_button_text_size": "12",
-        "header_button_text_color": "#ffffff",
-        "header_button_background_color": "#0095f6",
-        "hide_groupname": "1",
-        "hide_text": "0",
-        "hide_shadow": "0",
-        "show_header": "0",
-        "show_header_logo": "1",
-        "show_header_button": "1"
-    };</script>
-    <div id="instawall-root647" class="instawall instawall-root647"></div>
-    <script>(function (d, s, id) {
-        var js, dfjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {
-            return;
-        }
-        js = d.createElement(s);
-        js.id = id;
-        js.setAttribute("data-scriptid", "647");
-        js.src = "https://socactive.com/widgets/instawall/i.js?id=647&r=" + Math.random();
-        dfjs.parentNode.insertBefore(js, dfjs);
-    }(document, "script", "instawall-export647"));</script>
-    <style>.tabs-mquality {
-        display: none
-    }</style>
-    <div class="tabs-mquality"><a
-            href="https://contentuniq.com/">антиплагиат</a>.
-    </div>
+        <style>.instawall-root647 {
+            min-height: 80px;
+            margin: 0 auto
+        }</style>
+        <script>window['instawall647'] = {
+            "token": "BiwjtoZ+1Nqc571U05Wcg+X6DT0kzRcNZwkgzFXhj9GlDTjsVERrBaacEqDKG/baXBGB/EaSDfKx2kY4r/5NqM2F5QEiLOczPXVZOBZ0+b2kGMf9hw==",
+            "root_tagid": "instawall-root647",
+            "card_padding": "5",
+            "card_border_radius": "5",
+            "card_count": "3",
+            "layout_max_width": "1128",
+            "count_post": "6",
+            "header_text_size": "20",
+            "header_text_color": "#000000",
+            "header_logo_size": "50",
+            "header_button_text": "Подписаться",
+            "header_button_text_size": "12",
+            "header_button_text_color": "#ffffff",
+            "header_button_background_color": "#0095f6",
+            "hide_groupname": "1",
+            "hide_text": "0",
+            "hide_shadow": "0",
+            "show_header": "0",
+            "show_header_logo": "1",
+            "show_header_button": "1"
+        };</script>
+        <div id="instawall-root647" class="instawall instawall-root647"></div>
+        <script>(function (d, s, id) {
+            var js, dfjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.setAttribute("data-scriptid", "647");
+            js.src = "https://socactive.com/widgets/instawall/i.js?id=647&r=" + Math.random();
+            dfjs.parentNode.insertBefore(js, dfjs);
+        }(document, "script", "instawall-export647"));</script>
+        <style>.tabs-mquality {
+            display: none
+        }</style>
+        <div class="tabs-mquality"><a
+                href="https://contentuniq.com/">антиплагиат</a>.
+        </div>
 
-{% endblock %}
+    {% endblock %}
+</div>
 <div class="footer">
     <p><a href="https://www.instagram.com/liubisebia_sl/"
           class="fa fa-instagram"></a> <a
@@ -159,5 +169,3 @@
 </div>
 </body>
 </html>
-
-
