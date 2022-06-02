@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.http import HttpResponseNotFound
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import Services, Masters, Orders
 from .forms import OrdersForm
 from django.views.generic import ListView, CreateView, View
@@ -53,8 +53,7 @@ class OrdersView(CreateView):
         form = OrdersForm(data=request.POST)
         if form.is_valid():
             form.save()
-            return render(request, self.template_name,
-                          context={'description': 'Вы успешно записаны'})
+            return render(request, 'success.html')
         return render(request, self.template_name, {'form': form})
 
 
