@@ -57,8 +57,12 @@ class OrdersForm(ModelForm):
             raise forms.ValidationError(
                 "Мы не успеем все сделать до закрытия салона. Пожалуйста, выберите другое время")
 
-        if order_date < datetime.date.today():
+        if order_date < datetime.date.today() or (
+                datetime.datetime.now().date() == order_date and
+                datetime.datetime(100, 1, 1, datetime.datetime.now().hour,
+                                  datetime.datetime.now().minute,
+                                  0) > order_time_start):
             raise forms.ValidationError(
-                "У нас нет машины времени. Проверьте выбранную дату")
+                "У нас нет машины времени. Проверьте выбранную дату и/или время")
 
         return cleaned_data
