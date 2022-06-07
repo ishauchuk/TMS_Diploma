@@ -65,4 +65,23 @@ class OrdersForm(ModelForm):
             raise forms.ValidationError(
                 "У нас нет машины времени. Проверьте выбранную дату и/или время")
 
+        other_orders = Orders.objects.filter(
+            order_date=cleaned_data['order_date'],
+            master_choice=cleaned_data[
+                'master_choice'],
+        )
+        for order in other_orders:
+            order_time_db = datetime.datetime(100, 1, 1, order.order_time.hour,
+                                              order.order_time.minute, 0)
+            order_time_dur_db = Services.objects.get(
+                service_name=order.order_type).service_duration
+            order_finish_db = (order_time_db + datetime.timedelta(
+                hours=order_time_dur_db.hour,
+                minutes=order_time_dur_db.minute)).time()
+            if order_time_db.time() < order_time < order_finish_db:
+                raise forms.ValidationError(
+                    "Мастер занят в {:02d}:{:02d}, но готов принять Вас в {:02d}:{:02d}".format(
+                        order_time.hour, order_time.minute,
+                        order_finish_db.hour, order_finish_db.minute))
+
         return cleaned_data
