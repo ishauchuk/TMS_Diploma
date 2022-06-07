@@ -11,6 +11,7 @@ python-decouple = "^3.6"
 flake8 = "^4.0.1"
 django-phonenumber-field = {extras = ["phonenumberslite"], version = "^6.1.0"}
 django-admin-rangefilter = "^0.8.4"
+Pillow = "^9.1.1"
 
 [tool.poetry.dev-dependencies]
 
