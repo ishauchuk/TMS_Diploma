@@ -6,7 +6,7 @@ authors = ["Ihar Shauchuk <shauchuk.ihar@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
-Django = "^4.0.4"
+Django = "^4.0.6"
 python-decouple = "^3.6"
 flake8 = "^4.0.1"
 django-phonenumber-field = {extras = ["phonenumberslite"], version = "^6.1.0"}
